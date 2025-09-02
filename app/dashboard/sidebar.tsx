@@ -1,15 +1,17 @@
 "use client"
 
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Home, FlaskConical, BarChart3, BookOpen, Settings, User, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const pathname = usePathname()
 
   const menuItems = [
-    { icon: Home, label: "Dashboard", href: "/dashboard", active: true },
+    { icon: Home, label: "Dashboard", href: "/dashboard" },
     { icon: FlaskConical, label: "Simulations", href: "/simulations" },
     { icon: BarChart3, label: "Analytics", href: "/analytics" },
     { icon: BookOpen, label: "Knowledge Hub", href: "/knowledge" },
@@ -42,17 +44,20 @@ export function Sidebar() {
         </div>
 
         <nav className="space-y-2">
-          {menuItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <Button
-                variant={item.active ? "default" : "ghost"}
-                className={`w-full justify-start hover:bg-primary/10 ${isCollapsed ? "px-2" : "px-4"} ${item.active ? "bg-primary/20 text-primary" : ""}`}
-              >
-                <item.icon className="w-5 h-5" />
-                {!isCollapsed && <span className="ml-3">{item.label}</span>}
-              </Button>
-            </Link>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link key={item.href} href={item.href}>
+                <Button
+                  variant={isActive ? "default" : "ghost"}
+                  className={`w-full justify-start hover:bg-primary/10 ${isCollapsed ? "px-2" : "px-4"} ${isActive ? "bg-primary/20 text-primary" : ""}`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  {!isCollapsed && <span className="ml-3">{item.label}</span>}
+                </Button>
+              </Link>
+            )
+          })}
         </nav>
       </div>
     </div>
