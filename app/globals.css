@@ -1,0 +1,315 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for NanoToxLab futuristic theme with neon blue/purple accents */
+  --background: oklch(0.12 0.02 240); /* Dark navy background */
+  --foreground: oklch(0.98 0 0); /* Pure white text */
+  --card: oklch(0.15 0.02 240); /* Slightly lighter dark card background */
+  --card-foreground: oklch(0.95 0 0); /* Light text on cards */
+  --popover: oklch(0.15 0.02 240);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.65 0.25 200); /* Neon blue primary */
+  --primary-foreground: oklch(0.12 0.02 240); /* Dark text on primary */
+  --secondary: oklch(0.55 0.2 280); /* Neon purple secondary */
+  --secondary-foreground: oklch(0.98 0 0); /* White text on secondary */
+  --muted: oklch(0.25 0.02 240); /* Muted dark background */
+  --muted-foreground: oklch(0.7 0 0); /* Muted light text */
+  --accent: oklch(0.55 0.2 280); /* Neon purple accent */
+  --accent-foreground: oklch(0.98 0 0); /* White text on accent */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.02 240); /* Subtle borders */
+  --input: oklch(0.2 0.02 240); /* Input backgrounds */
+  --ring: oklch(0.65 0.25 200 / 0.5); /* Neon blue focus ring */
+  --chart-1: oklch(0.65 0.25 200); /* Neon blue */
+  --chart-2: oklch(0.55 0.2 280); /* Neon purple */
+  --chart-3: oklch(0.6 0.25 160); /* Neon green */
+  --chart-4: oklch(0.7 0.25 60); /* Neon yellow */
+  --chart-5: oklch(0.65 0.25 320); /* Neon pink */
+  --radius: 0.625rem;
+  --sidebar: oklch(0.12 0.02 240);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.65 0.25 200);
+  --sidebar-primary-foreground: oklch(0.12 0.02 240);
+  --sidebar-accent: oklch(0.55 0.2 280);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.3 0.02 240);
+  --sidebar-ring: oklch(0.65 0.25 200 / 0.7);
+}
+
+.dark {
+  /* Dark mode uses same futuristic theme as default */
+  --background: oklch(0.08 0.02 240); /* Even darker background for dark mode */
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.12 0.02 240);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.12 0.02 240);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.7 0.25 200); /* Brighter neon blue in dark mode */
+  --primary-foreground: oklch(0.08 0.02 240);
+  --secondary: oklch(0.6 0.2 280); /* Brighter neon purple in dark mode */
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.2 0.02 240);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.6 0.2 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.25 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0.02 240);
+  --input: oklch(0.15 0.02 240);
+  --ring: oklch(0.7 0.25 200 / 0.6);
+  --chart-1: oklch(0.7 0.25 200);
+  --chart-2: oklch(0.6 0.2 280);
+  --chart-3: oklch(0.65 0.25 160);
+  --chart-4: oklch(0.75 0.25 60);
+  --chart-5: oklch(0.7 0.25 320);
+  --sidebar: oklch(0.08 0.02 240);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.7 0.25 200);
+  --sidebar-primary-foreground: oklch(0.08 0.02 240);
+  --sidebar-accent: oklch(0.6 0.2 280);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.02 240);
+  --sidebar-ring: oklch(0.7 0.25 200 / 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Ensure html and body have dark background to prevent white glitch */
+  html {
+    @apply bg-background;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Prevent any white flash during loading */
+    background-color: oklch(0.12 0.02 240) !important;
+  }
+}
+
+/* Added custom animations for molecular background and glowing effects */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px oklch(0.65 0.25 200 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px oklch(0.65 0.25 200 / 0.8), 0 0 60px oklch(0.55 0.2 280 / 0.4);
+  }
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(100px, -50px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(200px, -100px) scale(0.8);
+    opacity: 0.1;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-particle-drift {
+  animation: particle-drift 15s linear infinite;
+}
+
+/* Added dashboard-specific animations for smooth interactions */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.4s ease-out;
+}
+
+/* Added preloader-specific animations */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+@keyframes molecular-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px oklch(0.65 0.25 200 / 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px oklch(0.65 0.25 200 / 0.8), 0 0 60px oklch(0.55 0.2 280 / 0.6);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 10s linear infinite;
+}
+
+.animate-molecular-pulse {
+  animation: molecular-pulse 2s ease-in-out infinite;
+}
+
+/* Added line-clamp utilities for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Added intro video specific animations for cinematic entrance effects */
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cinematic-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px oklch(0.65 0.25 200 / 0.6);
+  }
+  50% {
+    box-shadow: 0 0 60px oklch(0.65 0.25 200 / 0.9), 0 0 90px oklch(0.55 0.2 280 / 0.5);
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 1.5s ease-out;
+}
+
+.animate-slide-up-fade {
+  animation: slide-up-fade 1s ease-out both;
+}
+
+.animate-cinematic-glow {
+  animation: cinematic-glow 4s ease-in-out infinite;
+}
